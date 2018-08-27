@@ -7,13 +7,8 @@ The longer the prefix, the longer it'll take to compute.
 
 First, setup Rust. The best way to do this is with [rustup](https://rustup.rs).
 
-To install `banano-vanity` from crates.io:
 
-```
-cargo install banano-vanity
-```
-
-To install `banano-vanity` from source:
+To install `banano-vanity` from source enter the banano-vanity directory and type:
 
 ```
 cargo install
