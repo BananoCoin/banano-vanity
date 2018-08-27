@@ -74,7 +74,7 @@ fn account_encode(pubkey: [u8; 32]) -> String {
         reverse_chars.push(ACCOUNT_LOOKUP[n.to_usize().unwrap()]);
         ext_addr = ext_addr >> 5;
     }
-    reverse_chars.extend(b"_brx"); // xrb_ reversed
+    reverse_chars.extend(b"_nab"); // ban_ reversed
     reverse_chars
         .iter()
         .rev()
@@ -160,10 +160,10 @@ fn check_soln(params: &ThreadParams, key_or_seed: [u8; 32], is_seed: bool) -> bo
 }
 
 fn main() {
-    let args = clap::App::new("nano-vanity")
+    let args = clap::App::new("banano-vanity")
         .version(env!("CARGO_PKG_VERSION"))
         .author("Lee Bousfield <ljbousfield@gmail.com>")
-        .about("Generate NANO cryptocurrency addresses with a given prefix")
+        .about("Generate BANANO cryptocurrency addresses with a given prefix")
         .arg(
             clap::Arg::with_name("prefix")
                 .value_name("PREFIX")
@@ -238,7 +238,7 @@ fn main() {
     let mut ext_pubkey_req = BigInt::default();
     let mut ext_pubkey_mask = BigInt::default();
     if let Some(mut prefix) = args.value_of("prefix") {
-        if prefix.starts_with("xrb_") {
+        if prefix.starts_with("ban_") {
             prefix = &prefix[4..];
         }
         let mut prefix_chars = prefix.chars();
@@ -257,7 +257,7 @@ fn main() {
         if prefix_chars.next().is_some() {
             eprintln!("Warning: prefix too long.");
             eprintln!(
-                "Only the first 60 characters of your prefix (not including xrb_) will be used."
+                "Only the first 60 characters of your prefix (not including ban_) will be used."
             );
             eprintln!("");
         }
